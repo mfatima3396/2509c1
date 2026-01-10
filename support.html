@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center | Zero Lifestyle</title>
+    <link rel="icon" href="icon (2).png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        
+        /* Navbar Customization */
+        .navbar-brand img { width: 120px; }
+        .nav-link { font-weight: 600; color: #333 !important; transition: 0.3s; }
+        .nav-link:hover { color: var(--accent-red) !important; }
+        
+        :root {
+            --primary-black: #121212;
+            --accent-red: #d32f2f;
+            --soft-bg: #f8f9fa;
+            --text-grey: #6c757d;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fff;
+            color: var(--primary-black);
+        }
+
+        /* --- Navbar (Consistent) --- */
+        .navbar-brand img { width: 110px; }
+        .nav-link { font-weight: 600; color: #333; }
+        .nav-link:hover { color: var(--accent-red); }
+
+        /* --- Hero Search Section --- */
+        .support-hero {
+            background: linear-gradient(135deg, #121212 0%, #2c2c2c 100%);
+            color: white;
+            padding: 80px 0 100px;
+            text-align: center;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-box input {
+            height: 55px;
+            border-radius: 50px;
+            padding-left: 50px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-grey);
+        }
+
+        /* --- Quick Action Cards --- */
+        .help-grid { margin-top: -50px; }
+
+        .help-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .help-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary-black);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: var(--soft-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            color: var(--primary-black);
+        }
+
+        /* --- FAQ Accordion --- */
+        .accordion-item { border: none; margin-bottom: 10px; }
+        .accordion-button {
+            border-radius: 10px !important;
+            background-color: var(--soft-bg);
+            font-weight: 600;
+            color: var(--primary-black);
+            box-shadow: none !important;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-black);
+            color: white;
+        }
+        .accordion-button:not(.collapsed)::after {
+            filter: invert(1);
+        }
+        .accordion-body { background: white; color: var(--text-grey); }
+
+        /* --- Contact Section --- */
+        .contact-section { background-color: var(--soft-bg); }
+        .form-control {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .form-control:focus { border-color: var(--primary-black); box-shadow: none; }
+        
+        .btn-submit {
+            background: var(--primary-black);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-submit:hover { background: #333; transform: scale(1.02); }
+
+        /* --- Floating Chat --- */
+        .live-chat {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-red);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 10px 20px rgba(211, 47, 47, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: 0.3s;
+        }
+        .live-chat:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body>
+
+     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Zero Lifestyle"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-uppercase small">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="smartwatches.html">Smart Watches</a></li>
+                    <li class="nav-item"><a class="nav-link" href="zeroearbuds.html">Earbuds</a></li>
+                    <li class="nav-item"><a class="nav-link" href="headphones.html">Headphone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="support-hero">
+        <div class="container">
+            <h1 class="fw-bold mb-3">How can we help you?</h1>
+            <p class="opacity-75 mb-4">Search for answers, track orders, or contact our team.</p>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" class="form-control" placeholder="Type keywords like 'Warranty', 'Shipping', 'Pairing'...">
+            </div>
+        </div>
+    </section>
+
+    <section class="container help-grid">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="help-card" onclick="openTrackModal()">
+                    <div class="icon-box"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h5 class="fw-bold">Track Order</h5>
+                    <p class="small text-muted mb-0">Check shipment status</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="help-card" onclick="location.href='#faqs'">
+                    <div class="icon-box"><i class="fa-solid fa-book-open"></i></div>
+                    <h5 class="fw-bold">FAQs</h5>
+                    <p class="small text-muted mb-0">Common questions</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="help-card">
+                    <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h5 class="fw-bold">Warranty Claim</h5>
+                    <p class="small text-muted mb-0">Register or claim</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="help-card">
+                    <div class="icon-box"><i class="fa-solid fa-box-open"></i></div>
+                    <h5 class="fw-bold">Returns</h5>
+                    <p class="small text-muted mb-0">Policy & Process</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faqs" class="container py-5 mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="fw-bold text-center mb-5">Frequently Asked Questions</h2>
+                
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                                How do I pair my Zero Smartwatch?
+                            </button>
+                        </h2>
+                        <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                1. Download the "Zero Fit" app from App Store or Play Store.<br>
+                                2. Turn on Bluetooth on your phone.<br>
+                                3. Open the app, go to Devices > Add Device > Select your model.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                                What is the delivery time?
+                            </button>
+                        </h2>
+                        <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We usually deliver within 3-5 working days across Pakistan. In major cities like Karachi, Lahore, and Islamabad, delivery can take 24-48 hours.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
+                                How do I claim warranty?
+                            </button>
+                        </h2>
+                        <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                If your product faces technical issues within 1 year, please fill out the form below with your Order ID. Our team will contact you within 24 hours.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <h2 class="fw-bold mb-3">Still need help?</h2>
+                    <p class="text-muted mb-4">Our support team is available Mon-Sat, 9am - 6pm.</p>
+                    
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fa-solid fa-phone text-danger fs-5 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-0">Call Us</h6>
+                            <small class="text-muted">+92 300 1234567</small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fa-solid fa-envelope text-danger fs-5 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-0">Email Us</h6>
+                            <small class="text-muted">support@zerolifestyle.com</small>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-location-dot text-danger fs-5 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-0">Visit Us</h6>
+                            <small class="text-muted">Tech Tower, Shahrah-e-Faisal, Karachi</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="bg-white p-4 rounded-4 shadow-sm">
+                        <form onsubmit="submitForm(event)">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Full Name</label>
+                                    <input type="text" class="form-control" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Order ID (Optional)</label>
+                                    <input type="text" class="form-control" placeholder="#ZERO-1234">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="name@example.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold">Subject</label>
+                                    <select class="form-select">
+                                        <option>Product Inquiry</option>
+                                        <option>Order Status</option>
+                                        <option>Warranty Claim</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold">Message</label>
+                                    <textarea class="form-control" rows="4" placeholder="Describe your issue..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-submit w-100">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white text-center py-4 mt-auto">
+        <p class="mb-0 small opacity-50">© 2026 Zero Lifestyle. All rights reserved.</p>
+    </footer>
+
+    <div class="live-chat" onclick="alert('Live Chat Agent connecting...')">
+        <i class="fa-solid fa-headset"></i>
+    </div>
+
+    <div class="modal fade" id="trackModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">Track Your Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control mb-3" placeholder="Enter Tracking ID (e.g. TRK-990)">
+                    <button class="btn btn-dark w-100" onclick="alert('Status: In Transit (Karachi Hub)')">Track Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form Submission Logic
+        function submitForm(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.btn-submit');
+            const originalText = btn.innerText;
+            
+            btn.innerText = "Sending...";
+            btn.style.opacity = "0.7";
+
+            setTimeout(() => {
+                btn.innerText = "✓ Sent Successfully";
+                btn.style.backgroundColor = "#198754"; // Green
+                document.querySelector('form').reset();
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "#121212"; // Back to Black
+                    btn.style.opacity = "1";
+                }, 3000);
+            }, 1500);
+        }
+
+        // Open Track Modal
+        function openTrackModal() {
+            var myModal = new bootstrap.Modal(document.getElementById('trackModal'));
+            myModal.show();
+        }
+    </script>
+</body>
+</html>

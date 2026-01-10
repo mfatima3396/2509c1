@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Watches | Zero Lifestyle</title>
+    <link rel="icon" href="icon (2).png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-black: #121212;
+            --accent-red: #ff3e3e;
+            --soft-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--soft-bg);
+            color: var(--primary-black);
+        }
+
+        /* Navbar Customization */
+        .navbar-brand img {
+            width: 120px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #333 !important;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-red) !important;
+        }
+
+        /* Modern Product Card */
+        .product-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-item img {
+            border-radius: 15px;
+            object-fit: cover;
+            height: 250px;
+        }
+
+        .product-info h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .product-info .spec-tag {
+            font-size: 0.75rem;
+            color: #6c757d;
+            background: #eee;
+            padding: 2px 8px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--accent-red);
+            margin-bottom: 15px;
+        }
+
+        .action-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-view {
+            background: #f1f1f1;
+            color: #333;
+            border: none;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        .btn-add {
+            background: var(--primary-black);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-add:hover {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        /* Cart Drawer Styles */
+        .cart-item-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .remove-btn {
+            cursor: pointer;
+            color: #ff3e3e;
+        }
+
+        #cart-count {
+            font-size: 10px;
+            padding: 3px 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="logo.png" alt="Zero Lifestyle"></a>
+
+            <div class="d-flex align-items-center order-lg-last">
+                <a class="nav-link position-relative me-3" data-bs-toggle="offcanvas" data-bs-target="#cartSidebar">
+                    <i class="fa-solid fa-cart-shopping fs-5"></i>
+                    <span id="cart-count"
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-uppercase small">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="smartwatches.html">Smart Watches</a></li>
+                    <li class="nav-item"><a class="nav-link" href="zeroearbuds.html">Earbuds</a></li>
+                    <li class="nav-item"><a class="nav-link" href="headphones.html">Headphones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row mb-4 text-center">
+            <div class="col-12">
+                <h1 class="fw-bold">Explore Smart Watches</h1>
+                <p class="text-muted">Premium wearable technology for your lifestyle.</p>
+            </div>
+        </div>
+        <div class="row g-4" id="product-row"></div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar">
+        <div class="offcanvas-header bg-dark text-white">
+            <h5 class="offcanvas-title fw-bold">My Cart 🛒</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="cartItemsList"></div>
+            <div id="emptyCart" class="text-center py-5 d-none">
+                <i class="fa-solid fa-cart-shopping fs-1 text-muted mb-3"></i>
+                <p class="text-muted">Apka cart khali hai!</p>
+            </div>
+        </div>
+        <div class="offcanvas-footer p-3 border-top">
+            <div class="d-flex justify-content-between mb-3 fw-bold">
+                <span>Subtotal:</span>
+                <span id="totalAmount">Rs. 0</span>
+            </div>
+            <button class="btn btn-dark w-100 rounded-pill py-2" onclick="alert('Proceeding to Checkout...')">CHECKOUT
+                NOW</button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="modalTitle"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div id="modalDescription" style="white-space: pre-line; line-height: 1.6;"></div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-dark w-100 rounded-pill" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const products = [
+            {
+                name: "Luna Smartwatch",
+                price: "Rs. 8,999",
+                specs: "1.39\" HD Display | IP67",
+                images: ["https://zerolifestyle.co/cdn/shop/files/Luna-_5_3.webp?v=1752225993&width=700"],
+                description: `🌟 Luna Smartwatch\n\nSleek design with 1.39” HD display.\n\n✅ Bluetooth Calling\n✅ Health Tracking`
+            },
+            {
+                name: "Ignite Smartwatch",
+                price: "Rs.4,999",
+                specs: "Up to 9 Days Battery | Hottest Offer 🔥",
+                images: ["https://zerolifestyle.co/cdn/shop/files/ignite-black-02.png?v=1762943589&width=700"],
+                description: `Display: Full-color touch screen
+
+Health Tracking: Heart rate monitor, sleep analysis
+
+Activity Tracking: Steps, calories, various exercise modes
+
+Connectivity: Smart notifications for calls, texts, and social media
+
+Battery Life: Multi-day battery life on a single charge
+
+Customization: Multiple watch faces`
+            },
+            {
+                name: "Vision Smartwatch",
+                price: "Rs. 12,999",
+                specs: "AMOLED | 7 Day Battery",
+                images: ["https://zerolifestyle.co/cdn/shop/files/vision_Black-Gold_4.webp?v=1767350637&width=700"],
+                description: `Display: 1.3-inch AMOLED full touch screen
+
+Resolution: 360 x 360 pixels
+
+Sensors: Heart rate monitor, SpO2 monitor, accelerometer
+
+Compatibility: iOS and Android
+
+Strap Material: Silicone (interchangeable)
+
+Dimensions: 45 x 38 x 11 mm
+
+Connectivity: Bluetooth 5.0
+
+Battery Life: Up to 10 days
+
+Water Resistance: IP67 rating
+
+Weight: 42g`
+            },
+            {
+                name: "Icon Smartwatch",
+                price: "Rs. 9,499",
+                specs: "BT Calling | 1.38 HD Display",
+                images: ["https://zerolifestyle.co/cdn/shop/files/ICON-Black-2.webp?v=1755342446&width=700"],
+                description: `Display:
+Display Size: 1.38 inches
+Screen Type: TFT HD Display
+Menu View Styles: 2
+Connectivity:
+Bluetooth Version: 5.3
+Single Chip BT Calling
+Battery & Charging:
+Battery Life: 7 Days
+Physical Specifications:
+Shape: Square
+Water Resistance Rating: IP68
+Radiant Brightness
+Health Monitoring Features:
+Dynamic Heart Rate Monitoring
+SpO2 Monitoring
+Sleep Monitoring
+Female Health Tracking
+Smart Features:
+Watch Faces: 4 Built-in, 100+ Cloud-based
+Sports Modes: 100+
+Quick Dial Pad
+Smart Notifications
+Alarm, Timer, Stopwatch
+Camera Control`
+            }
+        ];
+
+        const productRow = document.getElementById('product-row');
+        const bModal = new bootstrap.Modal(document.getElementById('productModal'));
+
+        // Render Products
+        products.forEach((product, index) => {
+            const col = document.createElement('div');
+            col.className = "col-12 col-md-6 col-lg-4";
+            col.innerHTML = `
+                <div class="product-card h-100">
+                    <div class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="${product.images[0]}" class="d-block w-100" alt="Watch">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="spec-tag">${product.specs}</span>
+                        <h2>${product.name}</h2>
+                        <p class="price">${product.price}</p>
+                        <div class="action-btns">
+                            <button class="btn btn-view py-2" onclick="showDetails(${index})">Details</button>
+                            <button class="btn btn-add py-2" onclick="addToCart('${product.name}', '${product.price}', '${product.images[0]}')">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            productRow.appendChild(col);
+        });
+
+        function showDetails(index) {
+            document.getElementById("modalTitle").innerText = products[index].name;
+            document.getElementById("modalDescription").innerText = products[index].description;
+            bModal.show();
+        }
+
+        // --- SHARED CART LOGIC ---
+        let zeroCart = JSON.parse(localStorage.getItem('zero_lifestyle_cart')) || [];
+
+        function addToCart(name, price, img) {
+            zeroCart.push({ name, price, img });
+            saveAndRefresh();
+            new bootstrap.Offcanvas(document.getElementById('cartSidebar')).show();
+        }
+
+        function removeItem(index) {
+            zeroCart.splice(index, 1);
+            saveAndRefresh();
+        }
+
+        function saveAndRefresh() {
+            localStorage.setItem('zero_lifestyle_cart', JSON.stringify(zeroCart));
+            renderCart();
+        }
+
+        function renderCart() {
+            const list = document.getElementById('cartItemsList');
+            const empty = document.getElementById('emptyCart');
+            const totalDisp = document.getElementById('totalAmount');
+            const badge = document.getElementById('cart-count');
+
+            list.innerHTML = '';
+            let total = 0;
+
+            if (zeroCart.length === 0) {
+                empty.classList.remove('d-none');
+            } else {
+                empty.classList.add('d-none');
+                zeroCart.forEach((item, index) => {
+                    let priceVal = parseInt(item.price.replace(/[^0-9]/g, ''));
+                    total += priceVal;
+                    list.innerHTML += `
+                        <div class="d-flex align-items-center mb-3 shadow-sm p-2 rounded border">
+                            <img src="${item.img}" class="cart-item-img me-3">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-0 fw-bold small">${item.name}</h6>
+                                <span class="text-danger small fw-bold">${item.price}</span>
+                            </div>
+                            <i class="fa-solid fa-trash-can remove-btn" onclick="removeItem(${index})"></i>
+                        </div>
+                    `;
+                });
+            }
+            badge.innerText = zeroCart.length;
+            totalDisp.innerText = "Rs. " + total.toLocaleString();
+        }
+
+        document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+</body>
+
+</html>
